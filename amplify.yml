@@ -9,6 +9,8 @@ frontend:
   phases:
     build:
       commands:
+        - env | grep -e GOOGLE_CLIENT_ID >> .env.production
+        - env | grep -e GOOGLE_CLIENT_SECRET >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next

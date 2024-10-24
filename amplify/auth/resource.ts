@@ -1,4 +1,4 @@
-import { defineAuth } from "@aws-amplify/backend";
+import { defineAuth, secret } from "@aws-amplify/backend";
 
 /**
  * Define and configure your auth resource
@@ -7,5 +7,20 @@ import { defineAuth } from "@aws-amplify/backend";
 export const auth = defineAuth({
   loginWith: {
     email: true,
+    externalProviders: {
+      google: {
+        clientId: secret("GOOGLE_CLIENT_ID"),
+        clientSecret: secret("GOOGLE_CLIENT_SECRET"),
+        scopes: ["email"]
+      },
+      callbackUrls: [
+        "http://localhost:3000/",
+        "https://main.d2xpfqla0gvi29.amplifyapp.com/",
+      ],
+      logoutUrls: [
+        "http://localhost:3000/",
+        "https://main.d2xpfqla0gvi29.amplifyapp.com/",
+      ],
+    },
   },
 });
