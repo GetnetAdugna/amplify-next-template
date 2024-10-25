@@ -29,7 +29,7 @@ export const getFetchUserAttr = async () => {
     });
     return currentUser;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return false;
   }
 };
